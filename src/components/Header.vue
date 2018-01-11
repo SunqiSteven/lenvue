@@ -30,7 +30,7 @@
 		color:#FFF;
 		text-align:center;
 		width:100%;
-		background:#28C4AF;
+		background:#F36E65;
 		position:relative;
 	}
 </style>

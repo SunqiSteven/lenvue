@@ -4,8 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import {router} from './router'
 import Vuex from 'vuex'
+
 Vue.config.productionTip = false
-Vue.use(Vuex);
+Vue.use(Vuex)
 var store = new Vuex.Store({
    state:{
       headerTitle:'体检',
@@ -20,7 +21,7 @@ var store = new Vuex.Store({
        console.log(title)
       state.headerTitle = title;
      },
-     openNotice(state,msg){
+     notice(state,msg){
        state.notice.display = true;
        state.notice.msg = msg;
        setTimeout(function(){

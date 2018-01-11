@@ -3,7 +3,7 @@
 		<li v-for="user in users" :key="user.id">{{user.name}}</li>
 		<Dialog v-model="isDialog" v-on:ok="ok" msg="确定删除吗?"/>
 		<Button text="确认" v-on:on-click="clickHandler" width="100%"/>
-	</div>
+	</div>	
 </template>
 
 <script>
@@ -11,6 +11,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Dialog from '@/components/Dialog';
 import Button from '@/components/Button';	
+import Datepicker from 'vuejs-datepicker';
 export default {
          data(){
 			return {
@@ -32,11 +33,22 @@ export default {
 			},
 			ok(){
 				this.isDialog = false;
+			},
+			dateSelected(){
+				console.log(arguments[0])
+				var t = Date.parse(arguments[0]);
+				console.log(t)
 			}
 		},
-		components:{Header,Footer,Dialog,Button},
+		components:{Header,Footer,Dialog,Button,Datepicker},
 		created:function(){
 			 this.$store.commit('openNotice','组件加载成功')
+		},
+		destroyed:function(){
+			// alert("destroyed");
+		},
+		mounted:function(){
+		
 		}
 		
 	}
@@ -59,4 +71,6 @@ export default {
 		color:#FFF;
 		opacity:0.3;
 	}
+
 </style>
+

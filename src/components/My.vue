@@ -1,7 +1,6 @@
 <template>
 	<div>
-		<input type="text" placeholder="手机号"/>
-		<input type="text" placeholder="密码"/>
+		<div class="top"></div>
 	</div>
 </template>
 
@@ -33,5 +32,10 @@ input:focus{
 }
 ::-moz-placeholder {
 	color:#bbb;
+}
+.top {
+	width:100%;
+	height: 200px;
+	background:#F36E65;
 }
 </style>

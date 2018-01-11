@@ -2,7 +2,9 @@
 <template>
 <div>
     <Header v-bind:title="headerTitle"/>
+    <transition name="slide">
     <router-view/>
+    </transition>
 	<ul class="footer">
 		<router-link  v-for='(m,index) in menus' :to="m.to" :key="m.index">
 			{{m.name}}  
@@ -17,10 +19,10 @@ export default {
         return {
             headerTitle:'首页',
             menus:[
-						{name:'首页',to:'/home'},
-						{name:'体检',to:'/physical'},
-						{name:'礼券',to:'/coupon'},
-						{name:'我的',to:'/member'},
+						{name:'预约',to:'/prebook'},
+						{name:'买单',to:'/check'},
+						{name:'卡包',to:'/coupon'},
+						{name:'我的',to:'/my'},
 					]
         }
     },
@@ -35,7 +37,7 @@ export default {
     },
     watch:{
         '$route':function(to,from){
-            console.log(to)
+            // console.log(to)
             this.$store.commit('changeHeaderTitle',to.name);
             //  this.headerTitle = '会员中心';
             // if (to.path =='/home') {
@@ -95,21 +97,75 @@ export default {
         background-position:center top;
 	}
     .router-link-active {
-		color:#28C4AF;
+		color:#F36E65;
 	}
     .footer a:nth-child(2) {
-        background-image:url('../assets/test_icon.png'); 
+        background-image:url('../assets/images/check_2.png'); 
+    }
+    .footer a:nth-child(3) {
+        background-image:url('../assets/images/card_2.png'); 
+    }
+    .footer a:nth-child(4) {
+        background-image:url('../assets/images/account_2.png'); 
+    }
+    .footer a:nth-child(1) {
+        background-image:url('../assets/images/reserve_2.png'); 
     }
     .footer .router-link-active:nth-child(4) {
-        background-image:url('../assets/home_pree_icon.png'); 
+        background-image:url('../assets/images/account_1.png'); 
     }
     .footer .router-link-active:nth-child(1) {
-        background-image:url('../assets/home_pree_icon.png'); 
+        background-image:url('../assets/images/reserve_1.png'); 
     }
     .footer .router-link-active:nth-child(2) {
-        background-image:url('../assets/test_pree_icon.png'); 
+        background-image:url('../assets/images/check_1.png'); 
     }
     .footer .router-link-active:nth-child(3) {
-        background-image:url('../assets/home_pree_icon.png'); 
+        background-image:url('../assets/images/card_1.png'); 
     }
+@-webkit-keyframes slideInLeft {
+ from {
+  /* -webkit-transform: translate3d(200%, 0, 0); */
+  /* transform: translate3d(200%, 0, 0); */
+  transform: translateX(200%);
+  visibility: visible;
+ }
+ 
+ to {
+  /* -webkit-transform: translate3d(0, 0, 0); */
+  /* transform: translate3d(0, 0, 0); */
+  transform: translateX(0);
+ }
+ 
+}
+    .slide-enter-active {
+         transition: width .3s ease;
+          animation :slideInLeft .3s ease;
+    }
+    .slide-enter {
+        /* opacity: 1;
+        width:0; */
+        /* transform: translateX(-9990px); */
+            
+    }
+    .slide-enter-to {
+         /* opacity: 1;
+         width:100px; */
+         /* transform:translateX(900px); */
+         /* animation-name :slideInLeft; */
+    }
+    .slide-leave {
+        /* opacity: 0; */
+        /* height:0; */
+    }
+    .slide-leave-active {
+         transition: all .8s ease;
+    }
+    .slide-leave-to
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+        transform: translateX(-1000px);
+        opacity: 0;
+        height:0;
+    }
+
 </style>

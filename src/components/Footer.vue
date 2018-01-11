@@ -11,10 +11,10 @@
 		data(){
 			return {
 				menus:[
-						{name:'首页',to:'/home'},
-						{name:'体检',to:'/physical'},
-						{name:'礼券',to:'/coupon'},
-						{name:'我的',to:'/member'},
+						{name:'预约',to:'/prebook'},
+						{name:'买单',to:'/check'},
+						{name:'卡包',to:'/coupon'},
+						{name:'我的',to:'/my'},
 					]
 			}
 		}
